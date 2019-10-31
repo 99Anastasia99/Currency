@@ -1,6 +1,6 @@
-class AdminsController < ApplicationController
-def show
-end
+# frozen_string_literal: true
 
-binding.pry
+class AdminsController < ApplicationController
+  def show
+  end
 end

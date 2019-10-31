@@ -1,0 +1,12 @@
+<div id="flash_container">
+  <% flash.to_h.except("timedout").each do |key, value| %>
+    <% key = {
+         'alert' => 'warning',
+         'notice' => 'success'
+       }[key] || key
+    %>
+    <%= render partial: "shared/flash_message", locals: { key: key, value: value } %>
+  <% end %>
+
+  <%= devise_error_messages! %>
+</div>
