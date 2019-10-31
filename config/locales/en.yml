@@ -30,4 +30,11 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  admin_dashboard:
+    exchange_rate: 'Exchange Rate'
+    currency_converter: 'Currency converter'
+    id: 'Id'
+    name: 'Name'
+    purchase_rate: 'Purchase rate'
+    selling_rate: 'Selling rate'
+
