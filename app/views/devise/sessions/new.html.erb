@@ -1,0 +1,23 @@
+<div class="card">
+  <div class="card-header">
+    <div id="page-header" class="flex-container">
+      <div class="page-header">
+        <h1><%= resource.class %></h1>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email, required: false, autofocus: true %>
+          <%= f.input :password, required: false %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Log in", data: { disable: true }, class: "btn btn-red btn-lg btn-block" %>
+        </div>
+    <% end %>
+  </div>
+</div>
+<%#= render "devise/shared/links" %>

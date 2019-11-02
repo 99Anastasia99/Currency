@@ -1,0 +1,42 @@
+<div class="card converter-card">
+  <div class="card-header">
+    <div class="row text-center">
+      <h4> <%= t("admin_dashboard.currency_converter") %> </h4>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-hover table-striped header-darker" id="responses_list">
+        <thead>
+          <tr>
+            <th></th>
+            <th> <%= t("admin_dashboard.name") %> </th>
+            <th> <%= t("admin_dashboard.purchase_rate") %> </th>
+            <th> <%= t("admin_dashboard.selling_rate") %> </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% Banknote.all.each do |banknote| %>
+            <tr>
+              <td>
+                <%= banknote.id %>
+              </td>
+              <td>
+                <%= best_in_place_if admin(controller), banknote, :name, as: :select, collection: currency_with_abbreviations_for_edit %>
+              </td>
+
+              <td>
+                <%= best_in_place_if admin(controller), banknote, :purchase_rate, as: :input %>
+              </td>
+
+              <td>
+                <%= best_in_place_if admin(controller), banknote, :selling_rate, as: :input %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

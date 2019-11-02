@@ -1,0 +1,28 @@
+<%= simple_form_for @banknote do |f| %>
+  <div class="table">
+    <table class="table table-hover table-striped header-darker">
+      <th>
+        <%= f.input :name, collection: currency_with_abbreviations %>
+      </th>
+      <th> <%= f.input :purchase_rate,
+                 html5: true,
+                 input_html: {
+                   'pattern' => '[0-9]+([\.,][0-9]+)?',
+                    step: 0.01,
+                    min: 0,
+                    max: 5,
+                    type: 'number' },
+                 required: false %> </th>
+      <th> <%= f.input :selling_rate,
+                 html5: true,
+                 input_html: {
+                   'pattern' => '[0-5]+([\.,][0-9]+)?',
+                   step: 0.01,
+                   min: 0,
+                   max: 5,
+                   type: 'number' },
+                 required: false %> </th>
+      <th> <%= f.button :submit, class: "btn btn-success submit-button", data: { disable: true } %> </th>
+    </table>
+  </div>
+<% end %>

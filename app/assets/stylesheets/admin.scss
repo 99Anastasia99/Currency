@@ -1,0 +1,78 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+
+#dashboard_show, #users_show {
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .exchange-card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .container {
+    margin-right: 0em;
+    margin-top: 1em;
+    margin-left: 0em;
+  }
+
+  .converter-card {
+    min-width: 40em;
+  }
+}
+
+#sessions_new, #registrations_new {
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .btn-red {
+    background-color: #5E0909;
+    color: white;
+  }
+
+  .btn:hover, .btn:focus {
+    box-shadow: 0 0 0 0.2rem #BD7979;
+    border-color: #BD7979;
+    color: white;
+  }
+
+  .form-control:focus {
+    box-shadow: 0 0 0 0.2rem #BD7979;
+    border-color: #BD7979;
+  }
+
+  .container {
+    margin-top: 1em;
+  }
+}
+
+#new_banknote {
+  .table {
+    margin-top: 2em;
+  }
+
+  .submit-button {
+    margin-top: 2em;
+  }
+}
