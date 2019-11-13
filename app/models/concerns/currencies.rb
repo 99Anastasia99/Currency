@@ -23,7 +23,7 @@ module Currencies
     bahrain_dinar: 'BHD',
     bangladesh_taka: 'BDT',
     barbados_dollar: 'BBD',
-    belarus_ruble: 'BYR',
+    belarus_ruble: 'BYN',
     belize_dollar: 'BZD',
     bermuda_dollar: 'BMD',
     bhutan_ngultrum: 'BTN',

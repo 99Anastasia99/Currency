@@ -1,0 +1,23 @@
+<%= simple_form_for @converter do |f| %>
+  <div class="table">
+    <table class="table table-hover table-striped header-darker">
+      <th>
+        <%= f.input :banknote_name, collection: available_currencies_for_convert(@banknotes), label: I18n.t("admin_dashboard.currency") %>
+      </th>
+      <th> <%= f.input :amount,
+                 html5: true,
+                 input_html: {
+                    min: 0,
+                    type: 'number' },
+                    required: true,
+                 required: false %> </th>
+      <th> <%= f.input :type_of_operation,
+                 collection: Admin::DashboardController::TYPES,
+                 html5: true,
+                 allow_blank: false,
+                 label: I18n.t("admin_dashboard.type"),
+                 required: true %> </th>
+      <th> <%= f.button :submit, I18n.t("admin_dashboard.convert"), class: "btn btn-success submit-button", data: { disable: true }, post: :create %> </th>
+    </table>
+  </div>
+<% end %>

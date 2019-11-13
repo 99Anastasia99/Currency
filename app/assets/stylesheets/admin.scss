@@ -15,7 +15,7 @@
  */
 @import "bootstrap";
 
-#dashboard_show, #users_show {
+#dashboard_show, #cashiers_show {
   .flex-container {
     display: flex;
     flex-direction: row;
@@ -29,13 +29,25 @@
   }
 
   .container {
-    margin-right: 0em;
     margin-top: 1em;
-    margin-left: 0em;
+    max-width: 1800px;
+  }
+
+  .converter-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
 
   .converter-card {
-    min-width: 40em;
+    min-width: 55em;
+    margin-right: 1em;
+  }
+
+  .card-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
   }
 }
 
@@ -46,20 +58,24 @@
     justify-content: center;
   }
 
-  .btn-red {
-    background-color: #5E0909;
+  .btn-green {
+    background-color: #339966;
     color: white;
   }
 
+  .btn-dark-green {
+    background-color: #006635;
+    color: white;
+  }
   .btn:hover, .btn:focus {
-    box-shadow: 0 0 0 0.2rem #BD7979;
-    border-color: #BD7979;
+    box-shadow: 0 0 0 0.2rem #ccffe6;
+    border-color: #ccffe6;
     color: white;
   }
 
   .form-control:focus {
-    box-shadow: 0 0 0 0.2rem #BD7979;
-    border-color: #BD7979;
+    box-shadow: 0 0 0 0.2rem #ccffe6;
+    border-color: #ccffe6;
   }
 
   .container {

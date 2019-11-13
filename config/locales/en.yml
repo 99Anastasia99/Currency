@@ -37,4 +37,9 @@ en:
     name: 'Name'
     purchase_rate: 'Purchase rate'
     selling_rate: 'Selling rate'
+    convert: 'Convert'
+    type: 'Type of Operation'
+    currency: 'Currency'
+    from: 'From'
+    to: 'To'
 

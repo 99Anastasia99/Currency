@@ -15,9 +15,15 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Log in", data: { disable: true }, class: "btn btn-red btn-lg btn-block" %>
+          <%= f.button :submit, "Log in", data: { disable: true }, class: "btn btn-green btn-lg btn-block" %>
         </div>
     <% end %>
   </div>
+  <div class="card-footer">
+    <div class="form-actions">
+      <%= link_to login_title(opposite_resource_class(resource)), path_to_opposite_resource(resource), class: "btn btn-dark-green btn-lg btn-block" %>
+    </div>
+  </div>
 </div>
+
 <%#= render "devise/shared/links" %>

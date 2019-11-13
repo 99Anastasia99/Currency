@@ -2,7 +2,8 @@
 
 class Admin::BaseController < ApplicationController
   layout "admin"
-  before_action :authenticate_admin!, :set_en_language
+  before_action :authenticate_admin!
+  efore_action :authenticate_cashier!
 
   private
 

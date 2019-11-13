@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_192528) do
+ActiveRecord::Schema.define(version: 2019_11_12_214722) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -41,6 +41,36 @@ ActiveRecord::Schema.define(version: 2019_10_31_192528) do
     t.float "selling_rate", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "converters_id"
+    t.bigint "converter_id"
+    t.index ["converter_id"], name: "index_banknotes_on_converter_id"
+    t.index ["converters_id"], name: "index_banknotes_on_converters_id"
+  end
+
+  create_table "cashiers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.string "surname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_cashiers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_cashiers_on_reset_password_token", unique: true
+  end
+
+  create_table "converters", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "banknote_name"
+    t.string "type_of_operation"
+    t.string "user_name"
+    t.string "user_surname"
+    t.float "amount", default: 0.0, null: false
+    t.float "selling_rate", default: 0.0, null: false
+    t.float "purchase_rate", default: 0.0, null: false
+    t.float "result", default: 0.0, null: false
+    t.string "banknote_name_2"
   end
 
   create_table "receipts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -48,13 +78,6 @@ ActiveRecord::Schema.define(version: 2019_10_31_192528) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_receipts_on_user_id"
-  end
-
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name"
-    t.string "surname"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

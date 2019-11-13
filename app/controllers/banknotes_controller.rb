@@ -9,6 +9,7 @@ class BanknotesController < ApplicationController
   ].freeze
 
   def new
+    @banknotes = Banknote.all
     @banknote = Banknote.new
   end
 
