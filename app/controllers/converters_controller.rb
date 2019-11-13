@@ -16,9 +16,13 @@ class ConvertersController < ApplicationController
 
   def create
     @converter = Converter.new(converter_params)
-    binding.pry
-    ConverterService.call(banknote_1, banknote_2, @converter)
-    @converter.result
+    if @converter.save
+      ConverterService.call(banknote_1, banknote_2, @converter)
+      @converter.result
+    else
+      flash[:alert] = @converter.errors.full_messages.to_sentence
+      redirect_to root_path
+    end
   end
 
   private
