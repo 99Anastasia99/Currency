@@ -1,42 +1,37 @@
 <div class="card converter-card">
   <div class="card-header">
-    <div class="row text-center">
+    <div class="row converter-header">
       <h4> <%= t("admin_dashboard.currency_converter") %> </h4>
     </div>
   </div>
-  <div class="card-body">
-    <div class="table-responsive">
-      <table class="table table-hover table-striped header-darker" id="responses_list">
-        <thead>
-          <tr>
-            <th></th>
-            <th> <%= t("admin_dashboard.name") %> </th>
-            <th> <%= t("admin_dashboard.purchase_rate") %> </th>
-            <th> <%= t("admin_dashboard.selling_rate") %> </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% Banknote.all.each do |banknote| %>
-            <tr>
-              <td>
-                <%= banknote.id %>
-              </td>
-              <td>
-                <%= best_in_place_if admin(controller), banknote, :name, as: :select, collection: currency_with_abbreviations_for_edit %>
-              </td>
-
-              <td>
-                <%= best_in_place_if admin(controller), banknote, :purchase_rate, as: :input %>
-              </td>
-
-              <td>
-                <%= best_in_place_if admin(controller), banknote, :selling_rate, as: :input %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+  <%= simple_form_for @converter do |f| %>
+    <div class="card-body">
+        <div class="table">
+          <table class="table table-hover table-striped header-darker">
+            <th>
+              <%= f.input :banknote_name, collection: available_currencies_for_convert(@banknotes), label: I18n.t("admin_dashboard.from") %>
+              <%= f.input :banknote_name_2, collection: available_currencies_for_convert(@banknotes), label: I18n.t("admin_dashboard.to") %>
+            </th>
+            <th> <%= f.input :amount,
+                       html5: true,
+                       input_html: {
+                          min: 0,
+                          type: 'number' },
+                          required: true,
+                       required: false %>
+                 <%= f.input :user_surname, label: "Surname" %> </th>
+            <th> <%= f.input :type_of_operation,
+                       collection: Converter.type_of_operation.values,
+                       html5: true,
+                       allow_blank: false,
+                       label: I18n.t("admin_dashboard.type"),
+                       required: true %>
+                 <%= f.input :user_name, label: "Name" %> </th>
+          </table>
+        </div>
     </div>
-  </div>
+    <div class="card-footer"> <%= f.button :submit, I18n.t("admin_dashboard.convert"), class: "btn btn-success  text-right submit-button", data: { disable: true }, post: :create %>
+
+    </div>
+  <% end %>
 </div>
