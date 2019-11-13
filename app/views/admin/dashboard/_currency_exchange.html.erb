@@ -12,21 +12,15 @@
               <%= f.input :banknote_name, collection: available_currencies_for_convert(@banknotes), label: I18n.t("admin_dashboard.from") %>
               <%= f.input :banknote_name_2, collection: available_currencies_for_convert(@banknotes), label: I18n.t("admin_dashboard.to") %>
             </th>
-            <th> <%= f.input :amount,
+            <th> <%= f.input :user_name, label: "Name" %>
+                 <%= f.input :user_surname, label: "Surname" %> </th>
+            <th>  <%= f.input :amount,
                        html5: true,
                        input_html: {
                           min: 0,
                           type: 'number' },
                           required: true,
-                       required: false %>
-                 <%= f.input :user_surname, label: "Surname" %> </th>
-            <th> <%= f.input :type_of_operation,
-                       collection: Converter.type_of_operation.values,
-                       html5: true,
-                       allow_blank: false,
-                       label: I18n.t("admin_dashboard.type"),
-                       required: true %>
-                 <%= f.input :user_name, label: "Name" %> </th>
+                       required: false %> </th>
           </table>
         </div>
     </div>
