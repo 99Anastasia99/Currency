@@ -33,6 +33,7 @@ gem "devise_invitable", "2.0.1"
 gem "omniauth"
 gem "simple_form"
 gem "pry"
+gem "receipts"
 gem "enumerize"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"

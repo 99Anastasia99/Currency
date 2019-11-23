@@ -31,22 +31,30 @@
 
 en:
   admin_dashboard:
-    exchange_rate: 'Exchange Rate'
-    currency_converter: 'Currency converter'
-    id: 'Id'
-    name: 'Name'
-    purchase_rate: 'Purchase rate'
-    selling_rate: 'Selling rate'
-    convert: 'Convert'
-    type: 'Type of Operation'
-    currency: 'Currency'
-    from: 'From'
-    to: 'To'
+    exchange_rate: Exchange Rate
+    currency_converter: Currency converter
+    id: Id
+    name: Name
+    purchase_rate: Purchase rate
+    selling_rate: Selling rate
+    convert: Convert
+    type: Type of Operation
+    currency: Currency
+    from: From
+    to: To
   navbar:
     users: Users
     cashiers: Cashiers
     admins: Admins
+    history_of_operations: History of operations
   admins:
     index:
-      search_placeholder: 'Search by email, name, surname'
-      new_admin: 'Invite admin'
+      search_placeholder: Search by email, name, surname
+      new_admin: Invite admin
+  cashiers:
+    index:
+      search_placeholder: Search by email, name, surname
+      new_cashiers: Invite cashier
+  operations:
+    index:
+      search_placeholder: Search by type, amount, currency

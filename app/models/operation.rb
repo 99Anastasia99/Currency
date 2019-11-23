@@ -1,7 +1,8 @@
 class Operation < ApplicationRecord
   extend Enumerize
+  include Receipt
 
-  TYPES = %w[buy sell].freeze
+  TYPES = %w[purchase sell].freeze
   VALIDATIONS = %i[banknote_name
                    banknote_name_2
                    user_name

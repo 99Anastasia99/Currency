@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 2019_11_23_074220) do
     t.float "purchase_rate", default: 0.0, null: false
     t.float "result", default: 0.0, null: false
     t.string "banknote_name_2"
+    t.string "type_of_operation", default: ""
     t.string "cashier_name", default: ""
     t.string "cashier_surname", default: ""
   end

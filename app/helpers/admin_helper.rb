@@ -26,6 +26,16 @@ module AdminHelper
     render partial: 'shared/users_index', locals: defaults.merge(locals)
   end
 
+  def table(*options, &block)
+    locals = options.extract_options!
+    defaults = {
+      instance: nil,
+      column_names: nil
+    }
+
+    render partial: 'shared/table', locals: defaults.merge(locals)
+  end
+
   def activate_path(user, user_class)
     check_user_class(user_class) ? activate_admin_admin_path(user) : activate_cashier_cashier_path(user)
   end
