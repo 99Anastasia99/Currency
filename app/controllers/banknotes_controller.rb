@@ -14,6 +14,7 @@ class BanknotesController < ApplicationController
   end
 
   def create
+    @banknotes = Banknote.all
     @banknote = Banknote.new(banknote_params)
     if @banknote.save
       flash[:notice] = "Banknote was successfully created."

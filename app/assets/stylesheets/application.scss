@@ -15,4 +15,12 @@
  */
 @import "bootstrap";
 @import "password-complexity-check";
-@import "admin"
+@import "admin";
+@import "banknotes";
+@import "cashiers";
+
+
+.container {
+  margin-top: 1em;
+  max-width: 1800px;
+}

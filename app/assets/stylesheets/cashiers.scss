@@ -1,3 +1,34 @@
 // Place all the styles related to the cashiers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#dashboard_show, #cashiers_show,  {
+  .exchange-card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .converter-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .converter-card {
+    min-width: 55em;
+    margin-right: 1em;
+  }
+
+  .card-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}

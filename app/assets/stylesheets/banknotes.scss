@@ -1,3 +1,13 @@
 // Place all the styles related to the banknotes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#new_banknote {
+  .table {
+    margin-top: 2em;
+  }
+
+  .submit-button {
+    margin-top: 2em;
+  }
+}

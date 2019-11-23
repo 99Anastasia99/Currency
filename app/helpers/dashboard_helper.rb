@@ -15,12 +15,20 @@ BYN = Currencies::CURRENCY_WITH_ABBREVIATIONS[:belarus_ruble]
       .reject(&:blank?)
   end
 
-  # def available_currencies_for_create(banknotes)
-  #   currency_with_abbreviations.map do |curency, abbrev|
-  #     [curency, abbrev] if !list_of_banknotes(banknotes).include?(abbrev)
-  #   end
-  #     .reject(&:blank?)
-  # end
+  def available_currencies_for_create(banknotes)
+    currency_with_abbreviations.map do |curency, abbrev|
+      [curency, abbrev] unless list_of_banknotes(banknotes).include?(abbrev)
+    end
+      .reject(&:blank?)
+  end
+
+  def currencies_for_edit(banknotes)
+    binding.pry
+    currency_with_abbreviations.map do |abbrev, currency|
+      [currency, abbrev] unless list_of_banknotes(banknotes).include?(currency)
+    end
+      .reject(&:blank?)
+  end
 
   def list_of_banknotes(banknotes)
     banknotes.map { |banknote| banknote.name }

@@ -1,4 +1,4 @@
-class Converter < ApplicationRecord
+class Operation < ApplicationRecord
   extend Enumerize
 
   TYPES = %w[buy sell].freeze
