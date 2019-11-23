@@ -20,14 +20,26 @@ class OperationsController < ApplicationController
     @operation = Operation.new(operation_params)
     if @operation.save
       ConverterService.call(banknote_1, banknote_2, @operation)
-      @operation.result
+      save_pdf
     else
       flash[:alert] = @operation.errors.full_messages.to_sentence
       redirect_to root_path
     end
   end
 
+  def index
+    @q = Operation.ransack(params[:q])
+    @q.sorts = "email asc" if @q.sorts.empty?
+    @operations = @q.result.page(params[:page])
+  end
+
   private
+
+  def save_pdf
+    send_data @operation.receipt.render,
+      filename: "#{Date.today}-receipt.pdf",
+      type: "application/pdf"
+  end
 
   def banknote_1
     @banknote_1 ||= Banknote.find_by(name: operation_params.fetch(:banknote_name))

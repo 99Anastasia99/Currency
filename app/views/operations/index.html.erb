@@ -1,0 +1,7 @@
+<%= admin_page_header title: t("navigation.operations"),
+                      search_input_name: :banknote_name_or_amount_or_user_surname_cont,
+                      search_placeholder: t("operations.index.search_placeholder") %>
+
+<%= table instances: @operations,
+          column_names: @operations.column_names %>
+<%= paginate @operations %>

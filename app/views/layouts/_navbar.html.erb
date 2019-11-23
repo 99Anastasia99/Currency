@@ -1,44 +1,44 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <%= link_to "Currency", root_path, class: "navbar-brand" %>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= t("navbar.users") %>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to t("navbar.admins"), admins_path, class: "dropdown-item" if admin_signed_in?%>
-          <%= link_to t("navbar.cashiers"), cashiers_path, class: "dropdown-item" %>
-        </div>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
-    </ul>
-  </div>
-  <div class="flex-item">
-    <ul class="navbar-nav">
-      <% if admin_signed_in? || cashier_signed_in? %>
+  <% if admin_signed_in? || cashier_signed_in? %>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= current_admin&.email || current_cashier.email %>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= t("navbar.users") %>
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <%= link_to 'Logout', destroy_admin_session_path, method: :delete, class:
-                "dropdown-item" %>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to t("navbar.admins"), admins_path, class: "dropdown-item" if admin_signed_in?%>
+            <%= link_to t("navbar.cashiers"), cashiers_path, class: "dropdown-item" %>
           </div>
         </li>
+        <li class="nav-item active">
+          <%= link_to t("navbar.history_of_operations"), operations_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+    </div>
+    <div class="flex-item">
+      <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_admin&.email || current_cashier.email %>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <%= link_to 'Logout', destroy_admin_session_path, method: :delete, class:
+                  "dropdown-item" %>
+            </div>
+          </li>
       <% else %>
         <li>
           <%= link_to 'Sign in', new_admin_session_path %>
         </li>
-      <% end %>
-    </ul>
-  </div>
+      </ul>
+    </div>
+  <% end %>
 </nav>

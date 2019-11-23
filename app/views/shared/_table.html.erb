@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="table-responsive">
+    <table id="admins_list" class="table table-striped">
+      <thead>
+        <tr>
+          <% column_names.each do |column_name| %>
+            <th><%= sort_link(@q, column_name) %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% instances&.each do |instance| %>
+          <tr>
+            <% column_names.each do |column_name| %>
+              <td>
+                <%= instance.public_send(column_name) %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

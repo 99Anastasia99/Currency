@@ -5,7 +5,7 @@
     </div>
 
     <div class="col-md-4 row">
-      <%= link_to link_name, link_path, class: "btn btn-primary header-button" %>
+      <%= link_to link_name, link_path, class: "btn btn-primary header-button" if link_name %>
       <% if search_input_name %>
         <div>
           <%= search_form_for @q, url: search_url, class: 'form-inline' do |f| %>
