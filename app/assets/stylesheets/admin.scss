@@ -13,43 +13,6 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap";
-
-#dashboard_show, #cashiers_show {
-  .flex-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  .exchange-card-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-
-  .container {
-    margin-top: 1em;
-    max-width: 1800px;
-  }
-
-  .converter-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-
-  .converter-card {
-    min-width: 55em;
-    margin-right: 1em;
-  }
-
-  .card-footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-  }
-}
 
 #sessions_new, #registrations_new {
   .flex-container {
@@ -83,12 +46,9 @@
   }
 }
 
-#new_banknote {
-  .table {
-    margin-top: 2em;
-  }
-
-  .submit-button {
-    margin-top: 2em;
+#admins_index, #cashiers_index {
+  .header-button {
+    margin-right: 5px;
+    margin-bottom: 20px
   }
 }

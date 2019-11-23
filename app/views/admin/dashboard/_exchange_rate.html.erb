@@ -24,7 +24,7 @@
                 <%= banknote.id %>
               </td>
               <td>
-                <%= best_in_place_if admin(controller), banknote, :name, as: :select, collection: currency_with_abbreviations_for_edit %>
+                <%= best_in_place_if admin(controller), banknote, :name, as: :select, collection: currencies_for_edit(@banknotes) %>
               </td>
 
               <td>
