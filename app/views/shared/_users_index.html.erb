@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="table-responsive">
+    <table id="admins_list" class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= sort_link(@q, :email) %></th>
+          <th> <%= sort_link(@q, :name) %> </th>
+          <th> <%= sort_link(@q, :surname) %> </th>
+          <th> <%= sort_link(@q, :status) %> </th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users&.each do |user| %>
+          <tr id="user_<%= user.id %>">
+            <td><%= user.email %></td>
+            <td><%= best_in_place user, :name %></td>
+            <td><%= best_in_place user, :surname %></td>
+            <td><%= user.status %></td>
+            <td>
+              <% if current_admin != user %>
+                <% if user.accepted_or_not_invited? %>
+                  <% if user.active? %>
+                    <%#= link_to t("statuses.toggle.active"), deactivate_admin_path(admin),
+                                method: :put, class: "btn btn-xs btn-warning" %>
+                  <% else %>
+                    <%= link_to t("statuses.toggle.inactive"), activate_path(user, user_class),
+                                method: :put, class: "btn btn-xs btn-success" %>
+                  <% end %>
+                <% end %>
+                <%= link_to t("actions.destroy"), destroy_path(user, user_class),
+                            method: :delete, data: { confirm: t("actions.confirm") }, class: "btn btn-xs btn-danger" %>
+                <%= link_to t("actions.reset_password"), reset_password_path(user, user_class),
+                            method: :create, data: { confirm: t("actions.confirm") }, class: "btn btn-xs btn-warning btn-purple" %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

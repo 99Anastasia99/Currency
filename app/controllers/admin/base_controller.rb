@@ -2,8 +2,7 @@
 
 class Admin::BaseController < ApplicationController
   layout "admin"
-  before_action :authenticate_admin!
-  efore_action :authenticate_cashier!
+  # before_action :authenticate_admin!
 
   private
 

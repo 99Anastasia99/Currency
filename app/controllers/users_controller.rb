@@ -3,6 +3,6 @@
 class UsersController < ApplicationController
   def show
     @banknotes = Banknote.all
-    @converter = Converter.new
+    @operation = Operation.new
   end
 end

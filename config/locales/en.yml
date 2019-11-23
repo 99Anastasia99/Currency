@@ -42,4 +42,11 @@ en:
     currency: 'Currency'
     from: 'From'
     to: 'To'
-
+  navbar:
+    users: Users
+    cashiers: Cashiers
+    admins: Admins
+  admins:
+    index:
+      search_placeholder: 'Search by email, name, surname'
+      new_admin: 'Invite admin'

@@ -21,6 +21,6 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     return stored_location_for(resource) if stored_location_for(resource)
-    admin_path
+    root_path
   end
 end

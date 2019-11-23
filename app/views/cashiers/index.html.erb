@@ -1,0 +1,9 @@
+<%= admin_page_header title: t("navigation.cashier"),
+                      link_name: t("cashier.index.new_cashier"),
+                      link_path: new_cashier_invitation_path,
+                      search_input_name: :email_cont,
+                      search_placeholder: t("admins.index.search_placeholder") %>
+
+<%= users_table users: @cashiers,
+                      user_class: "Cashier" %>
+<%= paginate @cashiers %>
