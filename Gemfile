@@ -6,18 +6,19 @@ ruby "2.6.4"
 gem "best_in_place", "~> 3.0.1"
 gem "bootsnap", "1.4.5"
 gem "bootstrap-datepicker-rails", "1.8.0.1"
-gem "bootstrap", "4.3.1"
+gem "bootstrap", '~> 4.3.1'
 gem "bootstrap-sass", "3.4.1"
 gem "coffee-rails", "5.0.0"
 gem "jbuilder", "2.9.1"
 gem "jquery-rails", "4.3.1"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "~> 6.0.0"
+gem "rails", "6.0.1"
+gem "ransack"
 # Use mysql as the database for Active Record
 gem "mysql2", ">= 0.4.4"
 gem "money"
 # Use Puma as the app server
-gem "puma", "~> 3.11"
+gem "puma", "3.8"
 # Use SCSS for stylesheets
 gem "sass-rails", "~> 5"
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -26,7 +27,9 @@ gem "webpacker", "~> 4.0"
 gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem "figaro"
+gem "kaminari"
 gem "devise"
+gem "devise_invitable", "2.0.1"
 gem "omniauth"
 gem "simple_form"
 gem "pry"
@@ -50,8 +53,8 @@ group :development do
   gem "web-console", ">= 3.3.0"
   gem "listen", ">= 3.0.5", "< 3.2"
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
+  gem "spring", "2.0.2"
+  gem "spring-watcher-listen", "2.0.1"
 end
 
 group :test do

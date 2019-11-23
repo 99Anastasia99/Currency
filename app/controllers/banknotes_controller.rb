@@ -13,6 +13,10 @@ class BanknotesController < ApplicationController
     @banknote = Banknote.new
   end
 
+  def edit
+    @banknotes = Banknote.find(params[:id])
+  end
+
   def create
     @banknotes = Banknote.all
     @banknote = Banknote.new(banknote_params)

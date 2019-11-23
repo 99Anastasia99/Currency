@@ -4,7 +4,7 @@
       <h4> <%= t("admin_dashboard.currency_converter") %> </h4>
     </div>
   </div>
-  <%= simple_form_for @converter do |f| %>
+  <%= simple_form_for @operation do |f| %>
     <div class="card-body">
         <div class="table">
           <table class="table table-hover table-striped header-darker">
@@ -20,7 +20,10 @@
                           min: 0,
                           type: 'number' },
                           required: true,
-                       required: false %> </th>
+                       required: false %>
+            </th>
+            <th> <%= f.hidden_field :cashier_name, value: cashier_name %> </th>
+            <th> <%= f.hidden_field :cashier_surname, value: cashier_surname %> </th>
           </table>
         </div>
     </div>

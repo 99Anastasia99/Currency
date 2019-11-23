@@ -19,6 +19,12 @@ module DeviseHelper
     t("devise.sessions.log_in_as", resource: resource_class.name.titleize)
   end
 
+  def invitation_token(params)
+    return params[:admin][:invitation_token] if params[:admin]
+    return params[:cashier][:invitation_token] if params[:cashier]
+    params[:invitation_token]
+  end
+
   def opposite_resource_class(resource)
     resource.is_a?(Admin) ? Cashier : Admin
   end

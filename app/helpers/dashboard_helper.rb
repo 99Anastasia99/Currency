@@ -22,10 +22,9 @@ BYN = Currencies::CURRENCY_WITH_ABBREVIATIONS[:belarus_ruble]
       .reject(&:blank?)
   end
 
-  def currencies_for_edit(banknotes)
-    binding.pry
-    currency_with_abbreviations.map do |abbrev, currency|
-      [currency, abbrev] unless list_of_banknotes(banknotes).include?(currency)
+  def currencies_for_edit(banknotes, name)
+    currency_with_abbreviations_for_edit.map do |abbrev, currency|
+      [abbrev, currency] if list_of_banknotes(banknotes).include?(abbrev) || abbrev == name
     end
       .reject(&:blank?)
   end
@@ -42,5 +41,13 @@ BYN = Currencies::CURRENCY_WITH_ABBREVIATIONS[:belarus_ruble]
 
   def currency_with_abbreviations_for_edit
     Currencies::CURRENCY_WITH_ABBREVIATIONS.map { |key, value| [value, key.to_s.titleize]}
+  end
+
+  def cashier_name
+    current_cashier.name || current_admin.name
+  end
+
+  def cashier_surname
+    current_cashier.surname || current_admin.surname
   end
 end
