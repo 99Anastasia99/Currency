@@ -46,6 +46,12 @@
   }
 }
 
+.current-date {
+  box-sizing: border-box;
+  border: 2px solid #000;
+  padding: 5px;
+}
+
 #admins_index, #cashiers_index {
   .header-button {
     margin-right: 5px;

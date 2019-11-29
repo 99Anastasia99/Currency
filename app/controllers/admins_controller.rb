@@ -49,6 +49,7 @@ class AdminsController < ApplicationController
     @q = Admin.ransack(params[:q])
     @q.sorts = "email asc" if @q.sorts.empty?
     @admins = @q.result.page(params[:page])
+    @day = Day.first
   end
 
   def update

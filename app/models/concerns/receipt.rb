@@ -14,7 +14,7 @@ module Receipt
         email: "anastasiya.shimanskaya@kandasoft.com"
       },
       line_items: [
-        ["Date", Date.today],
+        ["Date", "#{date_of_operation.strftime("%d-%m-%Y")}"],
         ["From", "#{banknote_name}"],
         ["To", "#{banknote_name_2}"],
         ["Client", "#{user_name.titleize} #{user_surname.titleize}"],

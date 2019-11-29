@@ -17,6 +17,7 @@ class CashiersController < ApplicationController
     @q = Cashier.ransack(params[:q])
     @q.sorts = "email asc" if @q.sorts.empty?
     @cashiers = @q.result.page(params[:page])
+    @day = Day.first
   end
 
   def destroy

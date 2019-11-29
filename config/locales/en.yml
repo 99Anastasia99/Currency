@@ -47,6 +47,7 @@ en:
     cashiers: Cashiers
     admins: Admins
     history_of_operations: History of operations
+    next_day: Next day
   admins:
     index:
       search_placeholder: Search by email, name, surname

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_23_074220) do
+ActiveRecord::Schema.define(version: 2019_11_26_204429) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -88,6 +88,10 @@ ActiveRecord::Schema.define(version: 2019_11_23_074220) do
     t.index ["reset_password_token"], name: "index_cashiers_on_reset_password_token", unique: true
   end
 
+  create_table "days", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.datetime "current_date"
+  end
+
   create_table "operations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "banknote_name"
     t.string "user_name"
@@ -100,6 +104,7 @@ ActiveRecord::Schema.define(version: 2019_11_23_074220) do
     t.string "type_of_operation", default: ""
     t.string "cashier_name", default: ""
     t.string "cashier_surname", default: ""
+    t.datetime "date_of_operation", default: "2019-11-27 00:00:00"
   end
 
   create_table "receipts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
