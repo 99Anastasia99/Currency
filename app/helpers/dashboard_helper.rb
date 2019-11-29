@@ -44,10 +44,10 @@ BYN = Currencies::CURRENCY_WITH_ABBREVIATIONS[:belarus_ruble]
   end
 
   def cashier_name
-    current_cashier.name || current_admin.name
+    current_cashier&.name || current_admin&.name
   end
 
   def cashier_surname
-    current_cashier.surname || current_admin.surname
+    current_cashier&.surname || current_admin&.surname
   end
 end

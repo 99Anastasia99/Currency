@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resource :reset_password, only: :create, module: "cashier"
   end
 
+  get "/next_day", to: "forms#next_day"
+
   resources :admins do
     resource :reset_password, only: :create, module: "admins"
   end

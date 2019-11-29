@@ -11,7 +11,8 @@ class OperationsController < ApplicationController
                         type_of_operation
                         purchase_rate
                         selling_rate
-                        result].freeze
+                        result
+                        date_of_operation].freeze
   def new
     @operation = Operation.new
   end
@@ -37,7 +38,7 @@ class OperationsController < ApplicationController
 
   def save_pdf
     send_data @operation.receipt.render,
-      filename: "#{Date.today}-receipt.pdf",
+      filename: "#{@operation.date_of_operation.strftime("%d-%m-%Y")}-receipt.pdf",
       type: "application/pdf"
   end
 
@@ -49,7 +50,11 @@ class OperationsController < ApplicationController
     @banknote_2 ||= Banknote.find_by(name: operation_params.fetch(:banknote_name_2))
   end
 
+  def date_parameter
+    { date_of_operation: Day.first.current_date }
+  end
+
   def operation_params
-    params.require(:operation).permit(PERMITTED_PARAMS)
+    params.require(:operation).merge(date_parameter).permit(PERMITTED_PARAMS)
   end
 end
