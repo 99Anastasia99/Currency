@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin < ApplicationRecord
   include DeviseInvitable::Inviter
   include Toggleable
@@ -11,11 +13,12 @@ class Admin < ApplicationRecord
 
   def state
     return PENDING unless accepted_or_not_invited?
+
     super
   end
 
   def accept_invitation!
-    self.confirm
+    confirm
     super
   end
 

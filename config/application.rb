@@ -1,6 +1,8 @@
-require_relative 'boot'
+# frozen_string_literal: true
 
-require 'rails/all'
+require_relative "boot"
+
+require "rails/all"
 require "sprockets/railtie"
 require "active_model/railtie"
 require "active_job/railtie"
@@ -15,7 +17,11 @@ Bundler.require(*Rails.groups)
 
 module Currency
   class Application < Rails::Application
-    ENV.update YAML.load_file('config/application.yml')[Rails.env] rescue {}
+    begin
+      ENV.update YAML.load_file("config/application.yml")[Rails.env]
+    rescue StandardError
+      {}
+    end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
 

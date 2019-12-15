@@ -3,6 +3,7 @@
 module DeviseHelper
   def devise_error_messages!
     return unless devise_controller?
+
     resource.errors.full_messages.map do |message|
       render(
         partial: 'shared/flash_message',
@@ -16,12 +17,13 @@ module DeviseHelper
   end
 
   def login_title(resource_class)
-    t("devise.sessions.log_in_as", resource: resource_class.name.titleize)
+    t('devise.sessions.log_in_as', resource: resource_class.name.titleize)
   end
 
   def invitation_token(params)
     return params[:admin][:invitation_token] if params[:admin]
     return params[:cashier][:invitation_token] if params[:cashier]
+
     params[:invitation_token]
   end
 

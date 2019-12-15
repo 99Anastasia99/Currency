@@ -11,7 +11,7 @@ module StatusesHelper
     inactive: 'btn-success'
   }.freeze
 
-  def link_to_toggle_status(user, link, options={}, &block)
+  def link_to_toggle_status(user, link, options = {}, &block)
     link_to I18n.t("statuses.toggle.#{user_status(user)}"), link, prepare_options(user_status(user), options), &block
   end
 
@@ -23,7 +23,7 @@ module StatusesHelper
 
   def prepare_options(status, options)
     options.tap do |modified_options|
-      modified_options[:class] = [modified_options.fetch(:class, ''), link_class(status)].join(" ")
+      modified_options[:class] = [modified_options.fetch(:class, ''), link_class(status)].join(' ')
       modified_options[:method] = method_to_toggle_status(status)
     end
   end

@@ -16,17 +16,17 @@ module AdminHelper
     render partial: 'shared/page_header', locals: defaults.merge(locals)
   end
 
-  def users_table(*options, &block)
+  def users_table(*options)
     locals = options.extract_options!
     defaults = {
       users: nil,
-      user_class: nil,
+      user_class: nil
     }
 
     render partial: 'shared/users_index', locals: defaults.merge(locals)
   end
 
-  def table(*options, &block)
+  def table(*options)
     locals = options.extract_options!
     defaults = {
       instance: nil,
@@ -49,6 +49,6 @@ module AdminHelper
   end
 
   def check_user_class(user_class)
-    user_class == "Admin"
+    user_class == 'Admin'
   end
 end

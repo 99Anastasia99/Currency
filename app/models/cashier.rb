@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Cashier < ApplicationRecord
   include DeviseInvitable::Inviter
   include Toggleable
