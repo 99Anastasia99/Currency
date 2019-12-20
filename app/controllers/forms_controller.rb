@@ -8,7 +8,6 @@ class FormsController < ApplicationController
   end
 
   def base_currency
-    binding.pry
     BaseCurrency.first.update name: params.fetch(:name)
   end
 end

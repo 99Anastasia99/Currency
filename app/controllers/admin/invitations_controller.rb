@@ -8,6 +8,5 @@ class Admin::InvitationsController < BaseInvitationController
   end
 
   def edit
-    binding.pry
   end
 end

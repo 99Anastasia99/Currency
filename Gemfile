@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.6.4"
 
+gem "active_model_serializers", require: true
 gem "best_in_place", "~> 3.0.1"
 gem "bootsnap", "1.4.5"
 gem "bootstrap", "~> 4.3.1"

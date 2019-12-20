@@ -9,7 +9,7 @@ module StatisticsHelper
   }
 
   def type_of_operation_diagram(period)
-    pie_chart Operation.group(:type_of_operation).sum(:amount),
+    pie_chart Operation.group(:type_of_operation).count,
       title: "Type of operation with amount", download: true
   end
 
