@@ -1,0 +1,34 @@
+<%= link_to "Last Day", statistics_path(period: :day), class: "btn btn-sm btn-info" %>
+<%= link_to "Last Week", statistics_path(period: :week), class: "btn btn-sm btn-info" %>
+<%= link_to "Last Month", statistics_path(period: :month), class: "btn btn-sm btn-info" %>
+<%= link_to "All Period", statistics_path(period: :all), class: "btn btn-sm btn-info" %>
+
+<%= type_of_operation_diagram(@period) %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <%= count_of_operations(@period) %>
+    </div>
+    <div class="col-md-6">
+      <%= amount_of_operations(@period) %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= currency_for_sell(@period) %>
+    </div>
+    <div class="col-md-6">
+      <%= amount_for_sell(@period) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= currency_for_purchase(@period) %>
+    </div>
+    <div class="col-md-6">
+      <%= amount_for_purchase(@period) %>
+    </div>
+  </div>
+</div>

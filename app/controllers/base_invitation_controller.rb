@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 class BaseInvitationController < Devise::InvitationsController
-  PERMITTED_PARAMS = [
-    :name,
-    :surname,
-    :email,
-    :password,
-    :password_confirmation,
-    :invitation_token
+  PERMITTED_PARAMS = %i[
+    name
+    surname
+    email
+    password
+    password_confirmation
+    invitation_token
   ].freeze
 
   private

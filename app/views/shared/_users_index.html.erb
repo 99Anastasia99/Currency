@@ -18,7 +18,7 @@
             <td><%= best_in_place user, :surname %></td>
             <td><%= user.status %></td>
             <td>
-              <% if current_admin != user %>
+              <% if (current_cashier || current_admin) != user%>
                 <% if user.accepted_or_not_invited? %>
                   <% if user.active? %>
                     <%#= link_to t("statuses.toggle.active"), deactivate_admin_path(admin),

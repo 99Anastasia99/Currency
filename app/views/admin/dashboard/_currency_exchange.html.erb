@@ -8,11 +8,11 @@
     <div class="card-body">
         <div class="table">
           <table class="table table-hover table-striped header-darker">
-            <th>
+            <th id="from_currency">
               <%= f.input :banknote_name, collection: available_currencies_for_convert(@banknotes), label: I18n.t("admin_dashboard.from") %>
               <%= f.input :banknote_name_2, collection: available_currencies_for_convert(@banknotes), label: I18n.t("admin_dashboard.to") %>
             </th>
-            <th> <%= f.input :user_name, label: "Name" %>
+            <th id="to_currency"> <%= f.input :user_name, label: "Name" %>
                  <%= f.input :user_surname, label: "Surname" %> </th>
             <th>  <%= f.input :amount,
                        html5: true,
@@ -32,3 +32,26 @@
     </div>
   <% end %>
 </div>
+
+<% if admin_signed_in? %>
+  <div class="container">
+    <div class="card">
+      <%= simple_form_for @base_currency, remote: true do |f| %>
+        <div class="card-body">
+            <div class="table">
+              <table class="table table-hover table-striped header-darker">
+                <th>
+                  <%= f.input :name, collection: currency_with_abbreviations, label: I18n.t("admin_dashboard.default_currency") %>
+                </th>
+              </table>
+            </div>
+        </div>
+        <div class="card-footer"> <%= f.button :submit, I18n.t("admin_dashboard.choose"), class: "btn btn-success  text-right submit-button", data: { disable: true }, post: :create %>
+
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <p> <%= "Base currency: #{BaseCurrency.first.name}" %> </p>
+<% end %>

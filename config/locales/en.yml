@@ -32,6 +32,8 @@
 en:
   admin_dashboard:
     exchange_rate: Exchange Rate
+    default_currency: Base currency
+    choose: Choose
     currency_converter: Currency converter
     id: Id
     name: Name
@@ -48,6 +50,7 @@ en:
     admins: Admins
     history_of_operations: History of operations
     next_day: Next day
+    statistics: Statistics
   admins:
     index:
       search_placeholder: Search by email, name, surname
@@ -59,3 +62,17 @@ en:
   operations:
     index:
       search_placeholder: Search by type, amount, currency
+  actions:
+    edit: Edit
+    destroy: Destroy
+    cancel: Cancel
+    update: Update
+    back: Back
+    show: Show
+    index: Index
+    reset_password: Reset Password
+    reset_password_alert: Reset password instructions has been sent to %{email}
+    resend_invitation: 'Resend invitation'
+    resend_invitation_alert: Invitation was sent again to %{email}
+    confirm: Are you sure?
+    upload: Upload a file

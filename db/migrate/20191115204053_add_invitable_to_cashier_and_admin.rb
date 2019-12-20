@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddInvitableToCashierAndAdmin < ActiveRecord::Migration[6.0]
   def up
     change_table :admins do |t|

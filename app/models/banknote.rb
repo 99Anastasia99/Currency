@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Banknote < ApplicationRecord
   VALIDATIONS = %i[name
                    purchase_rate

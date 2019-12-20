@@ -34,7 +34,7 @@ class CashiersController < ApplicationController
     @cashier = Cashier.find(params.fetch(:id))
     respond_to do |format|
       if @cashier.update(cashier_params)
-        format.html { redirect_to(@cashier, notice: 'Cashier was successfully updated.') }
+        format.html { redirect_to(@cashier, notice: "Cashier was successfully updated.") }
         format.json { respond_with_bip(@cashier) }
       else
         format.html { render action: :edit }

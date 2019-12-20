@@ -32,7 +32,7 @@ class BanknotesController < ApplicationController
     @banknote = Banknote.find(params.fetch(:id))
     respond_to do |format|
       if @banknote.update(banknote_params)
-        format.html { redirect_to(@banknote, notice: 'Banknote was successfully updated.') }
+        format.html { redirect_to(@banknote, notice: "Banknote was successfully updated.") }
         format.json { respond_with_bip(@banknote) }
       else
         format.html { render action: :edit }

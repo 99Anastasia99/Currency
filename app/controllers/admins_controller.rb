@@ -8,8 +8,7 @@ class AdminsController < ApplicationController
     email
   ].freeze
 
-  def show
-  end
+  def show; end
 
   def edit
     @admin = Admin.find(params[:id])
@@ -56,7 +55,7 @@ class AdminsController < ApplicationController
     @admin = Admin.find(params.fetch(:id))
     respond_to do |format|
       if @admin.update(admin_params)
-        format.html { redirect_to(@admin, notice: 'Admin was successfully updated.') }
+        format.html { redirect_to(@admin, notice: "Admin was successfully updated.") }
         format.json { respond_with_bip(@admin) }
       else
         format.html { render action: :edit }

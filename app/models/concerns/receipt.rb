@@ -19,15 +19,15 @@ module Receipt
         ["To", "#{banknote_name_2}"],
         ["Client", "#{user_name.titleize} #{user_surname.titleize}"],
         ["Cashier", "#{cashier_name.titleize} #{cashier_surname.titleize}"],
-        ["Amount", "#{amount}"],
-        ["Selling rate", "#{selling_rate}"],
-        ["Purchase rate", "#{purchase_rate}"],
-        ["Type of operation", "#{type_of_operation}"],
-        ["Result", "#{result.round(2)}"]
+        ["Amount", amount.to_s],
+        ["Selling rate", selling_rate.to_s],
+        ["Purchase rate", purchase_rate.to_s],
+        ["Type of operation", type_of_operation.to_s],
+        ["Result", result.round(2).to_s]
       ],
       font: {
-        bold: Rails.root.join('app/assets/fonts/receipts/TradeGothic-Bold.ttf'),
-        normal: Rails.root.join('app/assets/fonts/receipts/TradeGothic.ttf'),
+        bold: Rails.root.join("app/assets/fonts/receipts/TradeGothic-Bold.ttf"),
+        normal: Rails.root.join("app/assets/fonts/receipts/TradeGothic.ttf")
       }
     )
   end

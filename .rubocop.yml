@@ -1,0 +1,36 @@
+AllCops:
+  TargetRubyVersion: 2.6.4
+  Exclude:
+    - db/schema.rb
+    - db/seeds.rb
+    - db/migrate/*.rb
+    - app/helpers/*.rb
+    - lib/**/*
+    - tmp/**/*
+    - vendor/**/*
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Style/MixinUsage:
+  Exclude:
+    - bin/*
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Metrics/LineLength:
+  Exclude:
+    - config/**/*.rb
+  Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+    - 'config/initializers/*.rb'
+    - 'config/routes.rb'
+    - config/environments/*.rb
+    - '**/concerns/*.rb'

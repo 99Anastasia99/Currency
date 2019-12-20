@@ -14,15 +14,16 @@ module Toggleable
   end
 
   def activate!
-    update_attribute :active, true # rubocop:disable Rails/SkipsModelValidations
+    update_attribute :active, true
   end
 
   def deactivate!
-    update_attribute :active, false # rubocop:disable Rails/SkipsModelValidations
+    update_attribute :active, false
   end
 
   def state
     return ACTIVE if active?
+
     INACTIVE
   end
 
