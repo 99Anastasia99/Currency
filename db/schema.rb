@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_26_204429) do
+ActiveRecord::Schema.define(version: 2019_12_17_193153) do
 
   create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -54,10 +54,16 @@ ActiveRecord::Schema.define(version: 2019_11_26_204429) do
     t.float "selling_rate", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "converters_id"
     t.bigint "converter_id"
     t.index ["converter_id"], name: "index_banknotes_on_converter_id"
-    t.index ["converters_id"], name: "index_banknotes_on_converters_id"
+  end
+
+  create_table "base_currencies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", default: "BYN"
+  end
+
+  create_table "base_currency", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", limit: 20
   end
 
   create_table "cashiers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -70,7 +76,6 @@ ActiveRecord::Schema.define(version: 2019_11_26_204429) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.boolean "status", default: false
     t.boolean "active", default: true, null: false
     t.string "invitation_token"
     t.datetime "invitation_created_at"
@@ -92,6 +97,10 @@ ActiveRecord::Schema.define(version: 2019_11_26_204429) do
     t.datetime "current_date"
   end
 
+  create_table "default", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", default: "BYN"
+  end
+
   create_table "operations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "banknote_name"
     t.string "user_name"
@@ -104,14 +113,6 @@ ActiveRecord::Schema.define(version: 2019_11_26_204429) do
     t.string "type_of_operation", default: ""
     t.string "cashier_name", default: ""
     t.string "cashier_surname", default: ""
-    t.datetime "date_of_operation", default: "2019-11-27 00:00:00"
+    t.datetime "date_of_operation", default: "2019-12-17 00:00:00"
   end
-
-  create_table "receipts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_receipts_on_user_id"
-  end
-
 end
