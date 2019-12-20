@@ -4,50 +4,6 @@
                       search_input_name: :email_cont,
                       search_placeholder: t("admins.index.search_placeholder") %>
 
-<!-- <div class="container">
-  <div class="table-responsive">
-    <table id="admins_list" class="table table-striped">
-      <thead>
-        <tr>
-          <th><%= sort_link(@q, :email) %></th>
-          <th> <%= sort_link(@q, :name) %> </th>
-          <th> <%= sort_link(@q, :surname) %> </th>
-          <th> <%= sort_link(@q, :status) %> </th>
-          <th></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @admins.each do |admin| %>
-          <tr id="admin_<%= admin.id %>">
-            <td><%= admin.email %></td>
-            <td><%= best_in_place admin, :name %></td>
-            <td><%= best_in_place admin, :surname %></td>
-            <td><%= admin.status %></td>
-            <td>
-              <% if current_admin != admin %>
-                <% if admin.accepted_or_not_invited? %>
-                  <% if admin.active? %>
-                    <%#= link_to t("statuses.toggle.active"), deactivate_admin_path(admin),
-                                method: :put, class: "btn btn-xs btn-warning" %>
-                  <% else %>
-                    <%= link_to t("statuses.toggle.inactive"), activate_admin_admin_path(admin),
-                                method: :put, class: "btn btn-xs btn-success" %>
-                  <% end %>
-                <% end %>
-                <%= link_to t("actions.destroy"), admin_path(admin),
-                            method: :delete, data: { confirm: t("actions.confirm") }, class: "btn btn-xs btn-danger" %>
-                <%= link_to t("actions.reset_password"), admin_reset_password_path(admin),
-                            method: :create, data: { confirm: t("actions.confirm") }, class: "btn btn-xs btn-warning btn-purple" %>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div> -->
-
 <%= users_table users: @admins,
                       user_class: "Admin" %>
 <%= paginate @admins %>

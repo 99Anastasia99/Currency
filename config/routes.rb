@@ -10,13 +10,14 @@ Rails.application.routes.draw do
   resources :operations
   resources :statistics, only: :index
   resources :cashiers do
-    resource :reset_password, only: :create, module: "cashier"
+    resource :reset_password, module: "cashier"
   end
 
   get "/next_day", to: "forms#next_day"
+  resource :base_currency
 
   resources :admins do
-    resource :reset_password, only: :create, module: "admins"
+    resource :reset_password, module: "admin"
   end
 
   devise_scope :admin do
@@ -31,11 +32,6 @@ Rails.application.routes.draw do
       root to: "admin/dashboard#show", as: :cashier_dashboard
     end
   end
-
-  # concern :toggleable do
-  #   put :activate, on: :member
-  #   put :deactivate, on: :member
-  # end
 
   root to: "admin/dashboard#show"
 end

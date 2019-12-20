@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-header">
     <div class="row exchange-card-header">
-      <div class="card-link"> <%= link_to 'Add new', new_banknote_path, class: "btn btn-outline-info" %> </div>
+      <div class="card-link"> <%= link_to 'Add new', new_banknote_path, class: "btn btn-outline-info" if admin_signed_in? %> </div>
       <h4> <%= t("admin_dashboard.exchange_rate") %> </h4>
      </div>
   </div>
@@ -24,15 +24,15 @@
                 <%= banknote.id %>
               </td>
               <td>
-                <%= best_in_place_if admin(controller), banknote, :name, as: :select, collection: currencies_for_edit(@banknotes, banknote.name) %>
+                <%= best_in_place_if admin_signed_in?, banknote, :name, as: :select, collection: currencies_for_edit(@banknotes, banknote.name) %>
               </td>
 
               <td>
-                <%= best_in_place_if admin(controller), banknote, :purchase_rate, as: :input %>
+                <%= best_in_place_if admin_signed_in?, banknote, :purchase_rate, as: :input %>
               </td>
 
               <td>
-                <%= best_in_place_if admin(controller), banknote, :selling_rate, as: :input %>
+                <%= best_in_place_if admin_signed_in?, banknote, :selling_rate, as: :input %>
               </td>
             </tr>
           <% end %>
