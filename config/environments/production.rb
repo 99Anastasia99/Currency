@@ -102,6 +102,7 @@ Rails.application.configure do
   }
 
   ActionMailer::Base.default_url_options[:host] = ENV["MAILER_HOST"]
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
