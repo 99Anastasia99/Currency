@@ -48,8 +48,11 @@ en:
     users: Users
     cashiers: Cashiers
     admins: Admins
+    app_settings: App Settings
     history_of_operations: History of operations
     next_day: Next day
+    date_now: Date now
+    previous: Previous Day
     statistics: Statistics
   admins:
     index:
@@ -76,3 +79,10 @@ en:
     resend_invitation_alert: Invitation was sent again to %{email}
     confirm: Are you sure?
     upload: Upload a file
+  app_settings:
+    session_timeout_in: "Session timeout (in minutes)"
+    max_operation_amount: "Maximal operation amount"
+    min_operation_amount: "Minimal operation amount"
+    min_rate: "Minimal rate"
+    max_rate: "Maximal rate"
+    title: "App settings"

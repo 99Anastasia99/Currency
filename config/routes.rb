@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   default_url_options host: "no-reply@gmail.com", port: 3000
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  resource :app_settings, only: %i[show update]
   resources :banknotes
   resources :operations
   resources :statistics, only: :index

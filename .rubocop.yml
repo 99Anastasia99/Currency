@@ -8,6 +8,8 @@ AllCops:
     - lib/**/*
     - tmp/**/*
     - vendor/**/*
+    - node_modules/**/*
+    - bin/**/*
 
 Style/Documentation:
   Enabled: false

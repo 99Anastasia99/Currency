@@ -54,14 +54,11 @@ class AdminsController < ApplicationController
   def update
     @admin = Admin.find(params.fetch(:id))
     respond_to do |format|
+      format.json { respond_with_bip(@admin) }
       if @admin.update(admin_params)
         format.html { redirect_to(@admin, notice: "Admin was successfully updated.") }
-        format.json { respond_with_bip(@admin) }
       else
         format.html { render action: :edit }
-        format.json do
-          respond_with_bip(@admin)
-        end
       end
     end
   end

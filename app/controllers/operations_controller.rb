@@ -20,7 +20,7 @@ class OperationsController < ApplicationController
   def create
     @operation = Operation.new(operation_params)
     if @operation.save
-      ConverterService.call(banknote_1, banknote_2, @operation)
+      ConverterService.call(banknote1, banknote2, @operation)
       save_pdf
     else
       flash[:alert] = @operation.errors.full_messages.to_sentence
@@ -38,20 +38,36 @@ class OperationsController < ApplicationController
 
   def save_pdf
     send_data @operation.receipt.render,
-      filename: "#{@operation.date_of_operation.strftime("%d-%m-%Y")}-receipt.pdf",
-      type: "application/pdf"
+              filename: "#{@operation.date_of_operation.strftime('%d-%m-%Y')}-receipt.pdf",
+              type: "application/pdf"
   end
 
-  def banknote_1
-    @banknote_1 ||= Banknote.find_by(name: operation_params.fetch(:banknote_name))
+  def banknote1
+    @banknote1 ||= Banknote.find_by(name: operation_params.fetch(:banknote_name))
   end
 
-  def banknote_2
-    @banknote_2 ||= Banknote.find_by(name: operation_params.fetch(:banknote_name_2))
+  def banknote2
+    @banknote2 ||= Banknote.find_by(name: operation_params.fetch(:banknote_name_2))
   end
 
   def date_parameter
-    { date_of_operation: Day.first.current_date }
+    @date_parameter ||= { date_of_operation: actual_time }
+  end
+
+  def actual_time
+    Day.first.current_date + (hour_now - day.hour).hours + (min_now - day.min).minutes
+  end
+
+  def day
+    @day ||= Day.first.current_date
+  end
+
+  def min_now
+    @min_now ||= Time.now.min
+  end
+
+  def hour_now
+    @hour_now ||= Time.now.hour
   end
 
   def operation_params

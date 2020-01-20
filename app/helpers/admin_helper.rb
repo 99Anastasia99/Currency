@@ -8,6 +8,7 @@ module AdminHelper
       search_input_name: nil,
       search_placeholder: nil,
       search_url: nil,
+      download_path: nil,
       link_path: nil,
       link_name: nil,
       custom_content: block

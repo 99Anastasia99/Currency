@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class ConverterService < BaseService
-  def initialize(banknote_1, banknote_2, operation)
-    @banknote_1 = banknote_1
-    @banknote_2 = banknote_2
+  def initialize(banknote1, banknote2, operation)
+    @banknote1 = banknote1
+    @banknote2 = banknote2
     @operation = operation
   end
 
@@ -14,7 +14,7 @@ class ConverterService < BaseService
 
   private
 
-  attr_reader :operation, :banknote_1, :banknote_2
+  attr_reader :operation, :banknote1, :banknote2
 
   def calculated_result
     return buy_currency if operation.banknote_name == base_currency
@@ -25,22 +25,26 @@ class ConverterService < BaseService
   end
 
   def buy_currency
-    operation.update selling_rate: banknote_2.selling_rate
+    operation.update selling_rate: banknote2.selling_rate
     operation.update type_of_operation: Operation.type_of_operation.sell
     operation.amount / operation.selling_rate
   end
 
   def sell_currency
-    operation.update purchase_rate: banknote_1.purchase_rate
+    operation.update purchase_rate: banknote1.purchase_rate
     operation.update type_of_operation: Operation.type_of_operation.purchase
     operation.amount * operation.purchase_rate
   end
 
   def two_steps_operation
-    operation.update purchase_rate: banknote_1.purchase_rate
+    update_rates!
     first_convertion = operation.amount * operation.purchase_rate
-    operation.update selling_rate: banknote_2.selling_rate
     first_convertion / operation.selling_rate
+  end
+
+  def update_rates!
+    operation.update purchase_rate: banknote1.purchase_rate
+    operation.update selling_rate: banknote2.selling_rate
   end
 
   def base_currency

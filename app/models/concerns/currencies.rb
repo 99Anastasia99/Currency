@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/ModuleLength
+
 module Currencies
   CURRENCY_WITH_ABBREVIATIONS = {
     australia_dollar: "AUD",
@@ -16,7 +18,6 @@ module Currencies
     argentina_peso: "ARS",
     armenia_dram: "AMD",
     aruba_florin: "AWG",
-    australia_dollar: "AUD",
     austria_schilling: "ATS",
     belgium_franc: "BEF",
     bahamas_dollar: "BSD",
@@ -155,7 +156,6 @@ module Currencies
     suriname_dollar: "SRD",
     swaziland_lilangeni: "SZL",
     sweden_krona: "SEK",
-    switzerland_franc: "CHF",
     syria_pound: "SYP",
     taiwan_dollar: "TWD",
     tanzania_shilling: "TZS",
@@ -165,7 +165,6 @@ module Currencies
     tunisia_dinar: "TND",
     turkish_new_lira: "TRY",
     turkmenistan_manat: "TMM",
-    USA_dollar: "USD",
     uganda_shilling: "UGX",
     ukraine_hryvnia: "UAH",
     uruguay_peso: "UYU",
@@ -178,3 +177,5 @@ module Currencies
     zimbabwe_dollar: "ZWD"
   }.freeze
 end
+
+# rubocop:enable Metrics/ModuleLength

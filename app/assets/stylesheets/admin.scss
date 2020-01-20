@@ -14,22 +14,13 @@
  *= require_self
  */
 
-#sessions_new, #registrations_new {
+#sessions_new, #registrations_new, #passwords_new {
   .flex-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
   }
 
-  .btn-green {
-    background-color: #339966;
-    color: white;
-  }
-
-  .btn-dark-green {
-    background-color: #006635;
-    color: white;
-  }
   .btn:hover, .btn:focus {
     box-shadow: 0 0 0 0.2rem #ccffe6;
     border-color: #ccffe6;
@@ -44,12 +35,36 @@
   .container {
     margin-top: 1em;
   }
+
+  .field-icon {
+    float: right;
+    margin-left: -20px;
+    margin-top: -25px;
+    margin-right: 10px;
+    position: relative;
+    z-index: 2;
+  }
 }
 
 .current-date {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
   box-sizing: border-box;
-  border: 2px solid #000;
-  padding: 5px;
+  border-radius: 15px 15px;
+  padding: 8px;
+}
+
+.btn-xs {
+  border-radius: 15px;
+}
+
+.btn-green {
+  background-color: #339966;
+  color: white;
+}
+
+.btn-dark-green {
+  background-color: #006635;
+  color: white;
 }
 
 #admins_index, #cashiers_index {
