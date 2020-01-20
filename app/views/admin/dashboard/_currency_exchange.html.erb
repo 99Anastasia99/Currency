@@ -17,6 +17,7 @@
             <th>  <%= f.input :amount,
                        html5: true,
                        input_html: {
+                          step: 10,
                           min: 0,
                           type: 'number' },
                           required: true,
@@ -27,8 +28,8 @@
           </table>
         </div>
     </div>
-    <div class="card-footer"> <%= f.button :submit, I18n.t("admin_dashboard.convert"), class: "btn btn-success  text-right submit-button", data: { disable: true }, post: :create %>
-
+    <div class="card-footer"> <%= f.button :submit, I18n.t("admin_dashboard.convert"), class: "btn btn-success  text-right submit-button", post: :create %>
     </div>
   <% end %>
 </div>
+

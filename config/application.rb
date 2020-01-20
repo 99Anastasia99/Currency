@@ -15,17 +15,19 @@ require "action_view/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-class Currency::Application < Rails::Application
-  begin
-    ENV.update YAML.load_file("config/application.yml")[Rails.env]
-  rescue StandardError
-    {}
+module Currency
+  class Application < Rails::Application
+    begin
+      ENV.update YAML.load_file("config/application.yml")[Rails.env]
+    rescue StandardError
+      {}
+    end
+    # Initialize configuration defaults for originally generated Rails version.
+    config.load_defaults "6.0"
+    config.autoloader = :classic
+    # Settings in config/environments/* take precedence over those specified here.
+    # Application configuration can go into files in config/initializers
+    # -- all .rb files in that directory are automatically loaded after loading
+    # the framework and any gems in your application.
   end
-  # Initialize configuration defaults for originally generated Rails version.
-  config.load_defaults "6.0"
-  config.autoloader = :classic
-  # Settings in config/environments/* take precedence over those specified here.
-  # Application configuration can go into files in config/initializers
-  # -- all .rb files in that directory are automatically loaded after loading
-  # the framework and any gems in your application.
 end

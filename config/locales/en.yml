@@ -79,6 +79,7 @@ en:
     resend_invitation_alert: Invitation was sent again to %{email}
     confirm: Are you sure?
     upload: Upload a file
+    download_xlsx: Download as xlsx file
   app_settings:
     session_timeout_in: "Session timeout (in minutes)"
     max_operation_amount: "Maximal operation amount"
