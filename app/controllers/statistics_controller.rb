@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class StatisticsController < ApplicationController
-  PERIODS = %w[month week day all]
+  PERIODS = %w[month week day all].freeze
 
   def index
     @period = params[:period]

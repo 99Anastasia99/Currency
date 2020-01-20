@@ -2,10 +2,10 @@
 
 module StatisticsHelper
   RANGES = {
-    "day" => [(Day.first.current_date - 1.day)..Day.first.current_date].freeze,
-    "week" => [(Day.first.current_date - 1.week)..Day.first.current_date].freeze,
-    "month" => [(Day.first.current_date - 1.month)..Day.first.current_date].freeze,
-    "all" => nil
+    "day" => ->(date) { [date..(date + 1.day)].freeze },
+    "week" => ->(date) { [(date - 1.week)..(date + 1.day)].freeze },
+    "month" => ->(date) { [(date - 1.month)..(date + 1.day)].freeze },
+    "all" => ->(date) { nil }
   }
 
   def type_of_operation_diagram(period)
@@ -45,7 +45,7 @@ module StatisticsHelper
   end
 
   def period_of_operations(period)
-    range = RANGES.fetch(period)
+    range = RANGES.fetch(period).call(date)
     self.send("operation_by_#{period}", *(range)) if StatisticsController::PERIODS.include?(period)
   end
 
@@ -63,6 +63,14 @@ module StatisticsHelper
 
   def operation_by_month(range)
     Operation.group_by_week(:date_of_operation, range: range)
+  end
+
+  def date
+    @date ||= day - day.hour.hours - day.min.minutes
+  end
+
+  def day
+    @day ||= Day.first.current_date
   end
 end
 

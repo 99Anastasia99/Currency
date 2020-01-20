@@ -11,6 +11,5 @@ class Admin::InvitationsController < BaseInvitationController
     send(:"authenticate_admin!", force: true)
   end
 
-  def edit
-  end
+  def edit; end
 end

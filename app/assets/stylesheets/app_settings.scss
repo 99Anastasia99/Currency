@@ -1,0 +1,23 @@
+#app_settings_show {
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-actions {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .form-control {
+    display: initial;
+  }
+}

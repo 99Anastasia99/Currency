@@ -9,7 +9,7 @@ module DashboardHelper
 
   def available_currencies_for_convert(banknotes)
     currency_with_abbreviations.map do |curency, abbrev|
-      if list_of_banknotes(banknotes).include?(abbrev) || abbrev == BaseCurrency.first.name
+      if list_of_banknotes(banknotes).include?(abbrev) || abbrev == base_currency_name
         [curency, abbrev]
         end
     end
@@ -37,6 +37,10 @@ module DashboardHelper
   end
 
   private
+
+  def base_currency_name
+    @base_currency_name ||= BaseCurrency.first.name
+  end
 
   def currency_with_abbreviations
     Currencies::CURRENCY_WITH_ABBREVIATIONS.map { |key, value| [key.to_s.titleize, value] }

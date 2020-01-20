@@ -35,18 +35,20 @@ gem "webpacker", "~> 4.0"
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem "turbolinks", "~> 5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem "chartkick"
 gem "devise"
 gem "devise_invitable", "2.0.1"
 gem "enumerize"
+gem "fast_excel"
 gem "figaro"
+gem "font-awesome-sass"
+gem "groupdate", "4.2.0 "
 gem "kaminari"
 gem "omniauth"
 gem "pry"
 gem "receipts"
 gem "sendgrid-ruby"
 gem "simple_form"
-gem "chartkick"
-gem "groupdate", "4.2.0 "
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 # Use Active Model has_secure_password

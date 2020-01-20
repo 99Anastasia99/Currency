@@ -1,0 +1,17 @@
+<div class="container">
+  <%= simple_form_for @app_settings, url: app_settings_path, method: :put do |f| %>
+    <h1 class="page-title"><%= t("app_settings.title") %></h1>
+    <div class="form-group">
+      <div class="input-group">
+        <%= f.input :session_timeout_in, label: t("app_settings.session_timeout_in"), required: false %>
+      </div>
+      <%= f.input :min_operation_amount, label: t("app_settings.min_operation_amount"), required: false %>
+      <%= f.input :max_operation_amount, label: t("app_settings.max_operation_amount"), required: false %>
+      <%= f.input :min_rate, label: t("app_settings.min_rate"), required: false %>
+      <%= f.input :max_rate, label: t("app_settings.max_rate"), required: false %>
+    </div>
+    <div class="form-actions">
+      <%= f.submit "Save", class: "btn btn-success" %>
+    </div>
+  <% end %>
+</div>
