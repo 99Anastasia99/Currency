@@ -32,6 +32,10 @@ class OperationsController < ApplicationController
     @q = Operation.ransack(params[:q])
     @q.sorts = "email asc" if @q.sorts.empty?
     @operations = @q.result.page(params[:page])
+    respond_to do |format|
+      format.html
+      format.csv { export_to_xlsx }
+    end
   end
 
   private
@@ -40,6 +44,12 @@ class OperationsController < ApplicationController
     send_data @operation.receipt.render,
               filename: "#{@operation.date_of_operation.strftime('%d-%m-%Y')}-receipt.pdf",
               type: "application/pdf"
+  end
+
+  def export_to_xlsx
+    export_data = @operations
+    send_data(XlsxExporter.call(export_data),
+              filename: "operations-#{Time.zone.today}.xlsx")
   end
 
   def banknote1
