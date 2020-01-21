@@ -1,0 +1,58 @@
+# Ruby CircleCI 2.1 configuration file
+#
+# Check https://circleci.com/docs/2.0/ruby/ for more details
+#
+version: 2.1
+
+
+orbs:
+  ruby: circleci/ruby@0.1.2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.6.3-stretch-node
+        environment:
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          RAILS_ENV: test
+      - image: circleci/mysql:latest
+        environment:
+          MYSQL_ROOT_PASSWORD: <%= ENV["DATABASE_PASSWORD"] %>
+          MYSQL_DATABASE: Currency_test
+          MYSQL_USER: root
+          MYSQL_PASSWORD: <%= ENV["DATABASE_PASSWORD"] %>
+
+    working_directory: ~/Currency
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          name: Bundle install
+          command: |
+            bundle install --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: Rubocop
+          command: |
+            mkdir /tmp/rubocop
+            bundle exec rubocop --format html --out /tmp/rubocop/results.html
+
+      # collect reports
+      - store_artifacts:
+          path: /tmp/rubocop
+          destination: rubocop
