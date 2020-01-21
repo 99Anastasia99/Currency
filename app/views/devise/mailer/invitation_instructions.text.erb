@@ -1,4 +1,4 @@
-<%= t("devise.mailer.invitation_instructions.welcome") %>
+<%= t("devise.mailer.invitation_instructions.welcome", name: @resource.name) %>
 
 <%= strip_tags t("devise.mailer.invitation_instructions.someone_invited_you", email: @resource.email) %>
 
