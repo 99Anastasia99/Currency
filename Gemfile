@@ -14,7 +14,7 @@ gem "bootstrap-sass", "3.4.1"
 gem "coffee-rails", "5.0.0"
 gem "jbuilder", "2.9.1"
 gem "jquery-rails", "4.3.1"
-gem "rails-assets-vuex", source: "https://rails-assets.org"
+# gem "rails-assets-vuex", source: "http://rails-assets.org"
 
 gem "rspec"
 gem "rubocop"
