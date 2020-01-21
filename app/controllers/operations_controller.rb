@@ -29,16 +29,30 @@ class OperationsController < ApplicationController
   end
 
   def index
-    @q = Operation.ransack(params[:q])
-    @q.sorts = "email asc" if @q.sorts.empty?
+    add_query
+    cookies[:query] = params[:q] if params[:q]
     @operations = @q.result.page(params[:page])
-    respond_to do |format|
-      format.html
-      format.csv { export_to_xlsx }
-    end
+    responders
   end
 
   private
+
+  def add_query
+    @q = Operation.ransack(params[:q])
+    @q.sorts = "email asc" if @q.sorts.empty?
+  end
+
+  def responders
+    respond_to do |format|
+      format.html
+      format.csv { export_to_xlsx(operations_for_export(cookies[:query])) }
+    end
+  end
+
+  def operations_for_export(query)
+    query_hash = JSON.parse(query.gsub("=>", ":") || "".to_json)
+    Operation.ransack(query_hash).result.page(params[:page])
+  end
 
   def save_pdf
     send_data @operation.receipt.render,
@@ -46,9 +60,8 @@ class OperationsController < ApplicationController
               type: "application/pdf"
   end
 
-  def export_to_xlsx
-    export_data = @operations
-    send_data(XlsxExporter.call(export_data),
+  def export_to_xlsx(operations)
+    send_data(XlsxExporter.call(operations),
               filename: "operations-#{Time.zone.today}.xlsx")
   end
 
