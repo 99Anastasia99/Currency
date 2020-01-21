@@ -28,8 +28,7 @@
           </table>
         </div>
     </div>
-    <div class="card-footer"> <%= f.button :submit, I18n.t("admin_dashboard.convert"), class: "btn btn-success  text-right submit-button", post: :create %>
+    <div class="card-footer"> <%= f.button :submit, I18n.t("admin_dashboard.convert"), id: "convert-button", class: "btn btn-success  text-right submit-button", data: { disable_with: false }, post: :create %>
     </div>
   <% end %>
 </div>
-
