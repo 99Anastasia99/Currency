@@ -7,6 +7,7 @@
     <div class="col-md-6">
       <% if search_input_name %>
         <div class="header-container">
+          <%= link_to link_name, link_path, class: "btn btn-primary" if link_name %>
           <%= link_to t("actions.download_xlsx"), download_path, class: "btn btn-primary header-button" if download_path %>
           <%= search_form_for @q, url: search_url, class: 'form-inline' do |f| %>
             <%= capture(f, &custom_content) if custom_content %>
