@@ -1,0 +1,32 @@
+---
+language: ruby
+
+matrix:
+  include:
+#  - os: linux
+#    rvm: 2.2.10
+#  - os: osx
+#    rvm: 2.2.10
+  - os: linux
+    rvm: 2.3.8
+  - os: osx
+    rvm: 2.3.8
+  - os: linux
+    rvm: 2.4.5
+  - os: osx
+    rvm: 2.4.5
+  - os: linux
+    rvm: 2.5.3
+  - os: osx
+    rvm: 2.5.3
+  - os: linux
+    rvm: 2.6.0
+  - os: osx
+    rvm: 2.6.0
+  fast_finish: true
+
+script:
+  - bundle install
+  - make
+  - bundle exec rake test
+  - bundle exec rake examples
