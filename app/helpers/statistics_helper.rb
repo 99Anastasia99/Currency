@@ -40,8 +40,10 @@ module StatisticsHelper
   end
 
   def amount_for_purchase(period)
-    column_chart period_of_operations(period).group(:banknote_name_2).sum(:amount), title: "Amount of purchase operations",
-                                                                                    prefix: "$", download: true
+    column_chart period_of_operations(period).group(:banknote_name_2).sum(:amount),
+                 title: "Amount of purchase operations",
+                 prefix: "$",
+                 download: true
   end
 
   def period_of_operations(period)

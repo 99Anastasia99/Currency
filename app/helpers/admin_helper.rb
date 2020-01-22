@@ -3,16 +3,8 @@
 module AdminHelper
   def admin_page_header(*options, &block)
     locals = options.extract_options!
-    defaults = {
-      title: nil,
-      search_input_name: nil,
-      search_placeholder: nil,
-      search_url: nil,
-      download_path: nil,
-      link_path: nil,
-      link_name: nil,
-      custom_content: block
-    }
+    defaults = { title: nil, search_input_name: nil, search_placeholder: nil, search_url: nil,
+                 download_path: nil, link_path: nil, link_name: nil, custom_content: block }
 
     render partial: "shared/page_header", locals: defaults.merge(locals)
   end
