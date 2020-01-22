@@ -2,7 +2,7 @@
 #
 # Check https://circleci.com/docs/2.0/ruby/ for more details
 #
-version: 2.1
+version: 2.3.5
 
 jobs:
   build:
@@ -26,30 +26,28 @@ jobs:
 
       # Download and cache dependencies
       - restore_cache:
-          keys:
-          - v1-dependencies-
-          - v1-dependencies-
+          key: bundler-{{ checksum "Gemfile.lock" }}
 
       - run:
-          name: Configure Bundler
+          name: Install dependencies
           command: |
             gem install bundler:2.1.2
-
-      - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+            gem install rubocop
+            bundle config --local frozen true
+            bundle config --local without production:development:staging
+            bundle config --local path vendor/bundle
+            bundle check || bundle install --jobs=4 --retry=3
 
       - save_cache:
+          key: bundler-{{ checksum "Gemfile.lock" }}
           paths:
-            - ./vendor/bundle
-          key: v1-dependencies-
+            - vendor/bundle
 
       - run:
           name: Rubocop
           command: |
             mkdir /tmp/rubocop
-            bundle exec rubocop --format html --out /tmp/rubocop/results.html
+            bundler exec rubocop --format html --out /tmp/rubocop/results.html
 
       # collect reports
       - store_artifacts:
