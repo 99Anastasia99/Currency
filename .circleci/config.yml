@@ -9,8 +9,6 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.4-node-browsers
         environment:
-          BUNDLE_JOBS: 3
-          BUNDLE_RETRY: 3
           BUNDLER_VERSION: 2.1.2
           BUNDLE_PATH: vendor/bundle
           RAILS_ENV: test
@@ -29,26 +27,23 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
           - v1-dependencies-
 
       - run:
           name: Configure Bundler
           command: |
-            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
-            source $BASH_ENV
-            gem install bundler
+            gem install bundler:2.1.2
 
       - run:
-          name: Bundle install
+          name: install dependencies
           command: |
-            bundle install --path vendor/bundle
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
 
       - save_cache:
           paths:
             - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          key: v1-dependencies-
 
       - run:
           name: Rubocop
