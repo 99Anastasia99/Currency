@@ -50,7 +50,7 @@ class OperationsController < ApplicationController
   end
 
   def operations_for_export(query)
-    query_hash = JSON.parse(query.gsub("=>", ":") || "".to_json)
+    query_hash = JSON.parse(query&.gsub("=>", ":") || "".to_json)
     Operation.ransack(query_hash).result.page(params[:page])
   end
 

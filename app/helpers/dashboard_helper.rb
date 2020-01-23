@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module DashboardHelper
-  ADMIN_DASHBOARD = 'Admin::DashboardController'
+  ADMIN_DASHBOARD = "Admin::DashboardController"
 
   def admin(controller)
     controller.class.name == ADMIN_DASHBOARD
@@ -9,27 +9,23 @@ module DashboardHelper
 
   def available_currencies_for_convert(banknotes)
     currency_with_abbreviations.map do |curency, abbrev|
-      if list_of_banknotes(banknotes).include?(abbrev) || abbrev == base_currency_name
-        [curency, abbrev]
-        end
+      [curency, abbrev] if list_of_banknotes(banknotes).include?(abbrev) || abbrev == base_currency_name
     end
-      .reject(&:blank?)
+                               .reject(&:blank?)
   end
 
   def available_currencies_for_create(banknotes)
     currency_with_abbreviations.map do |curency, abbrev|
       [curency, abbrev] unless list_of_banknotes(banknotes).include?(abbrev)
     end
-      .reject(&:blank?)
+                               .reject(&:blank?)
   end
 
   def currencies_for_edit(banknotes, name)
     currency_with_abbreviations_for_edit.map do |abbrev, currency|
-      if list_of_banknotes(banknotes).exclude?(abbrev) || abbrev == name
-        [abbrev, currency]
-        end
+      [abbrev, currency] if list_of_banknotes(banknotes).exclude?(abbrev) || abbrev == name
     end
-      .reject(&:blank?)
+                                        .reject(&:blank?)
   end
 
   def list_of_banknotes(banknotes)

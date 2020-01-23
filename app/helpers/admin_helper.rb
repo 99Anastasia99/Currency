@@ -3,18 +3,10 @@
 module AdminHelper
   def admin_page_header(*options, &block)
     locals = options.extract_options!
-    defaults = {
-      title: nil,
-      search_input_name: nil,
-      search_placeholder: nil,
-      search_url: nil,
-      download_path: nil,
-      link_path: nil,
-      link_name: nil,
-      custom_content: block
-    }
+    defaults = { title: nil, search_input_name: nil, search_placeholder: nil, search_url: nil,
+                 download_path: nil, link_path: nil, link_name: nil, custom_content: block }
 
-    render partial: 'shared/page_header', locals: defaults.merge(locals)
+    render partial: "shared/page_header", locals: defaults.merge(locals)
   end
 
   def users_table(*options)
@@ -24,7 +16,7 @@ module AdminHelper
       user_class: nil
     }
 
-    render partial: 'shared/users_index', locals: defaults.merge(locals)
+    render partial: "shared/users_index", locals: defaults.merge(locals)
   end
 
   def table(*options)
@@ -34,7 +26,7 @@ module AdminHelper
       column_names: nil
     }
 
-    render partial: 'shared/table', locals: defaults.merge(locals)
+    render partial: "shared/table", locals: defaults.merge(locals)
   end
 
   def activate_path(user, user_class)
@@ -50,6 +42,6 @@ module AdminHelper
   end
 
   def check_user_class(user_class)
-    user_class == 'Admin'
+    user_class == "Admin"
   end
 end

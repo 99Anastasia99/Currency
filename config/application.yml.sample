@@ -1,0 +1,9 @@
+EXCEPTION_EMAIL_RECIPIENTS: "admin@myintuition.org anastasia.shymanskaya@gmail.com"
+DATABASE_PASSWORD: ""
+DATABASE_URL: ""
+SENDGRID_USERNAME: ""
+SENDGRID_PASSWORD: ""
+SENDGRID_API_KEY: ""
+SENDGRID_DOMAIN: "onlinexchanger.herokuapp.com"
+MAILER_HOST: "onlinexchanger.herokuapp.com"
+ALLOWED_DOMAINS: 'mail.ru gmail.com'

@@ -4,12 +4,12 @@ AllCops:
     - db/schema.rb
     - db/seeds.rb
     - db/migrate/*.rb
-    - app/helpers/*.rb
     - lib/**/*
     - tmp/**/*
     - vendor/**/*
     - node_modules/**/*
     - bin/**/*
+    - config/**/*
 
 Style/Documentation:
   Enabled: false
