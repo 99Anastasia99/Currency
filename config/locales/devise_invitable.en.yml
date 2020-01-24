@@ -17,7 +17,7 @@ en:
         submit_button: Set my password
     mailer:
       invitation_instructions:
-        welcome: Welcome!
+        welcome: Welcome, %{name}!
         subject: Invitation instructions Online Exchanger
         someone_invited_you: "The email address, %{email}, has been invited to create an account for use with the Online Exchanger. Please accept the invitation using the link below."
         accept: "Accept Invitation"

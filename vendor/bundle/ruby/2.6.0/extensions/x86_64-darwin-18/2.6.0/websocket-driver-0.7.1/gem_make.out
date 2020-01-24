@@ -1,0 +1,15 @@
+current directory: /Users/Mac/Desktop/rails/Currency/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.1/ext/websocket-driver
+/Users/Mac/.rvm/rubies/ruby-2.6.4/bin/ruby -I /Users/Mac/.rvm/rubies/ruby-2.6.4/lib/ruby/site_ruby/2.6.0 -r ./siteconf20200122-41182-3kfqhl.rb extconf.rb
+creating Makefile
+
+current directory: /Users/Mac/Desktop/rails/Currency/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.1/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /Users/Mac/Desktop/rails/Currency/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.1/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/Mac/Desktop/rails/Currency/vendor/bundle/ruby/2.6.0/gems/websocket-driver-0.7.1/ext/websocket-driver
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 websocket_mask.bundle ./.gem.20200122-41182-18hvfrt

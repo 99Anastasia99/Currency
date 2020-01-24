@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_17_193153) do
-  create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+ActiveRecord::Schema.define(version: 2020_01_19_120813) do
+
+  create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "surname", default: "", null: false
     t.string "email", default: "", null: false
@@ -49,7 +48,15 @@ ActiveRecord::Schema.define(version: 2019_12_17_193153) do
     t.index ["unlock_token"], name: "index_admins_on_unlock_token", unique: true
   end
 
-  create_table "banknotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "app_settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.float "max_operation_amount", default: 10000.0
+    t.float "min_operation_amount", default: 2.0
+    t.float "min_rate", default: 2.0
+    t.float "max_rate", default: 10000.0
+    t.integer "session_timeout_in", default: 30, null: false
+  end
+
+  create_table "banknotes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name"
     t.float "purchase_rate", default: 0.0, null: false
     t.float "selling_rate", default: 0.0, null: false
@@ -59,15 +66,11 @@ ActiveRecord::Schema.define(version: 2019_12_17_193153) do
     t.index ["converter_id"], name: "index_banknotes_on_converter_id"
   end
 
-  create_table "base_currencies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "base_currencies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name", default: "BYN"
   end
 
-  create_table "base_currency", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", limit: 20
-  end
-
-  create_table "cashiers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "cashiers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "name"
     t.string "surname"
     t.datetime "created_at", precision: 6, null: false
@@ -94,15 +97,11 @@ ActiveRecord::Schema.define(version: 2019_12_17_193153) do
     t.index ["reset_password_token"], name: "index_cashiers_on_reset_password_token", unique: true
   end
 
-  create_table 'days', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci', force: :cascade do |t|
-    t.datetime 'current_date'
+  create_table "days", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
+    t.datetime "current_date"
   end
 
-  create_table "default", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", default: "BYN"
-  end
-
-  create_table "operations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "operations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC", force: :cascade do |t|
     t.string "banknote_name"
     t.string "user_name"
     t.string "user_surname"
@@ -114,6 +113,7 @@ ActiveRecord::Schema.define(version: 2019_12_17_193153) do
     t.string "type_of_operation", default: ""
     t.string "cashier_name", default: ""
     t.string "cashier_surname", default: ""
-    t.datetime "date_of_operation", default: "2019-12-17 00:00:00"
+    t.datetime "date_of_operation", default: "2019-12-20 00:00:00"
   end
+
 end

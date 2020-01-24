@@ -7,6 +7,9 @@ class Admin::InvitationsController < BaseInvitationController
     :admin
   end
 
-  def edit
+  def authenticate_inviter!
+    send(:"authenticate_admin!", force: true)
   end
+
+  def edit; end
 end

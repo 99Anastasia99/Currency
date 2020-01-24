@@ -31,4 +31,18 @@
     flex-direction: row;
     justify-content: flex-end;
   }
+
+  .base-currency-input {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .base-currency-button {
+    max-height: 40px
+  }
+
+  .base-currency-container {
+    margin-top: 1em;
+  }
 }
