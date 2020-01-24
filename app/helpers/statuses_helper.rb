@@ -2,13 +2,13 @@
 
 module StatusesHelper
   STATUSES_TO_METHODS_MAPPING = {
-    active: 'delete',
-    inactive: 'create'
+    active: "delete",
+    inactive: "create"
   }.freeze
 
   STATUSES_TO_CLASS_MAPPING = {
-    active: 'btn-warning',
-    inactive: 'btn-success'
+    active: "btn-warning",
+    inactive: "btn-success"
   }.freeze
 
   def link_to_toggle_status(user, link, options = {}, &block)
@@ -23,7 +23,7 @@ module StatusesHelper
 
   def prepare_options(status, options)
     options.tap do |modified_options|
-      modified_options[:class] = [modified_options.fetch(:class, ''), link_class(status)].join(' ')
+      modified_options[:class] = [modified_options.fetch(:class, ""), link_class(status)].join(" ")
       modified_options[:method] = method_to_toggle_status(status)
     end
   end

@@ -26,6 +26,10 @@ module Currency
     config.load_defaults "6.0"
     config.autoloader = :classic
 
+    Raven.configure do |config|
+      config.dsn = 'https://9135cfa033784bbca1fa1b34f0ea23b4:1734f9ec1a464b998c89f69589f9d3eb@sentry.io/1866984'
+    end
+ 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

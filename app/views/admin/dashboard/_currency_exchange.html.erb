@@ -17,6 +17,7 @@
             <th>  <%= f.input :amount,
                        html5: true,
                        input_html: {
+                          step: 10,
                           min: 0,
                           type: 'number' },
                           required: true,
@@ -27,31 +28,7 @@
           </table>
         </div>
     </div>
-    <div class="card-footer"> <%= f.button :submit, I18n.t("admin_dashboard.convert"), class: "btn btn-success  text-right submit-button", data: { disable: true }, post: :create %>
-
+    <div class="card-footer"> <%= f.button :submit, I18n.t("admin_dashboard.convert"), id: "convert-button", class: "btn btn-success  text-right submit-button", data: { disable_with: false }, post: :create %>
     </div>
   <% end %>
 </div>
-
-<% if admin_signed_in? %>
-  <div class="container">
-    <div class="card">
-      <%= simple_form_for @base_currency, remote: true do |f| %>
-        <div class="card-body">
-            <div class="table">
-              <table class="table table-hover table-striped header-darker">
-                <th>
-                  <%= f.input :name, collection: currency_with_abbreviations, label: I18n.t("admin_dashboard.default_currency") %>
-                </th>
-              </table>
-            </div>
-        </div>
-        <div class="card-footer"> <%= f.button :submit, I18n.t("admin_dashboard.choose"), class: "btn btn-success  text-right submit-button", data: { disable: true }, post: :create %>
-
-        </div>
-      <% end %>
-    </div>
-  </div>
-<% else %>
-  <p> <%= "Base currency: #{BaseCurrency.first.name}" %> </p>
-<% end %>

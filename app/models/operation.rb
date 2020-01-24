@@ -15,7 +15,8 @@ class Operation < ApplicationRecord
 
   has_many :banknotes
 
-  validates_numericality_of :amount, greater_than_or_equal_to: 2, less_than_or_equal_to: 10_000
+  validates_numericality_of :amount, greater_than_or_equal_to: AppSetting.first.min_operation_amount,
+                                     less_than_or_equal_to: AppSetting.first.max_operation_amount
 
   validates(*VALIDATIONS, presence: true)
 end
