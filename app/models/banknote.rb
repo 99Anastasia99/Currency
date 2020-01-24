@@ -9,6 +9,6 @@ class Banknote < ApplicationRecord
 
   validates(*VALIDATIONS, presence: true)
   validates_numericality_of :purchase_rate, :selling_rate,
-                            greater_than_or_equal_to: AppSetting.current.min_rate,
-                            less_than_or_equal_to: AppSetting.current.max_rate
+                            greater_than_or_equal_to: AppSetting.first.min_rate,
+                            less_than_or_equal_to: AppSetting.first.max_rate
 end
