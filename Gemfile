@@ -48,6 +48,7 @@ gem "omniauth"
 gem "pry"
 gem "receipts"
 gem "sendgrid-ruby"
+gem "sentry-raven"
 gem "simple_form"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
