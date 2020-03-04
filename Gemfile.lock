@@ -200,7 +200,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (4.0.3)
-    puma (3.8.0)
+    puma (3.12.4)
     rack (2.1.1)
     rack-proxy (0.6.5)
       rack
@@ -378,7 +378,7 @@ DEPENDENCIES
   mysql2 (>= 0.4.4)
   omniauth
   pry
-  puma (= 3.8)
+  puma (= 3.12.4)
   rails (= 6.0.1)
   ransack
   receipts
